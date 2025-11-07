@@ -1,5 +1,5 @@
 import { test, expect, describe } from '@jest/globals';
-import { capitalize, reverseString, calculator } from './main';
+import { capitalize, reverseString, calculator, caesarCipher } from './main';
 
 describe('"capitalize" function tests', () => {
   test('Full lowercase input', () => {
@@ -80,5 +80,27 @@ describe('"calculator" object tests', () => {
 
   test('Divide function test: 6 / 0', () => {
     expect(() => calculator.divide(6, 0)).toThrow(Error);
+  });
+});
+
+describe('"caesarCipher" function tests', () => {
+  test('From "a" to "c" with shift 3 test', () => {
+    expect(caesarCipher('abc', 3)).toMatch('def');
+  });
+
+  test('From "a" to "c" with shift 10 test', () => {
+    expect(caesarCipher('abc', 10)).toMatch('klm');
+  });
+
+  test('From "z" to "a" with shift 3 test', () => {
+    expect(caesarCipher('xyz', 3)).toMatch('abc');
+  });
+
+  test('Case preservation test', () => {
+    expect(caesarCipher('HeLLoWoRlD', 3)).toMatch('KhOOrZrUoG');
+  });
+
+  test('Non-alphabetical characters test', () => {
+    expect(caesarCipher('H3ll0, 4m4z1ng w0rld!', 3)).toMatch('K3oo0, 4p4c1qj z0uog!');
   });
 });
