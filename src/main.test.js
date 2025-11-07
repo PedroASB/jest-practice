@@ -1,5 +1,5 @@
 import { test, expect, describe } from '@jest/globals';
-import { capitalize, reverseString, calculator, caesarCipher } from './main';
+import { capitalize, reverseString, calculator, caesarCipher, analyzeArray } from './main';
 
 describe('"capitalize" function tests', () => {
   test('Full lowercase input', () => {
@@ -102,5 +102,23 @@ describe('"caesarCipher" function tests', () => {
 
   test('Non-alphabetical characters test', () => {
     expect(caesarCipher('H3ll0, 4m4z1ng w0rld!', 3)).toMatch('K3oo0, 4p4c1qj z0uog!');
+  });
+});
+
+describe('"analyzeArray" function tests', () => {
+  test('Average test', () => {
+    expect(analyzeArray([1, 8, 3, 4, 2, 6]).average).toBeCloseTo(4);
+  });
+
+  test('Min test', () => {
+    expect(analyzeArray([1, 8, 3, 4, 2, 6]).min).toBe(1);
+  });
+
+  test('Max test', () => {
+    expect(analyzeArray([1, 8, 3, 4, 2, 6]).max).toBe(8);
+  });
+
+  test('Length test', () => {
+    expect(analyzeArray([1, 8, 3, 4, 2, 6]).length).toBe(6);
   });
 });
