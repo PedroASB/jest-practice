@@ -18,3 +18,22 @@ describe('"capitalize" function tests', () => {
     expect(capitalize('Regular show')).toBe('Regular show');
   });
 });
+
+
+describe('"reverseString" function tests', () => {
+  test('generic input with even length', () => {
+    expect(reverseString('GitHub').toBe('buHtiG'));
+  });
+
+  test('generic input with odd length', () => {
+    expect(reverseString('OdinProject').toBe('tcejorPnidO'));
+  });
+
+  test('simple palindrome input', () => {
+    expect(reverseString('level').toBe('level'));
+  });
+
+  test('large palindrome input', () => {
+    expect(reverseString('neveroddoreven').toBe('neveroddoreven'));
+  });
+});
