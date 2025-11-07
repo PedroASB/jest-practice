@@ -1,5 +1,5 @@
 import { test, expect, describe } from '@jest/globals';
-import { capitalize, reverseString } from './main';
+import { capitalize, reverseString, calculator } from './main';
 
 describe('"capitalize" function tests', () => {
   test('Full lowercase input', () => {
@@ -34,5 +34,51 @@ describe('"reverseString" function tests', () => {
 
   test('Large palindrome input', () => {
     expect(reverseString('neveroddoreven')).toMatch(/^neveroddoreven$/);
+  });
+});
+
+describe('"calculator" object tests', () => {
+  test('Add function test: 1 + 9', () => {
+    expect(calculator.add(1, 9)).toBe(10);
+  });
+
+  test('Add function test:: -2 + -5', () => {
+    expect(calculator.add(-2, -5)).toBe(-7);
+  });
+
+  test('Subtract function test: 10 - 3', () => {
+    expect(calculator.subtract(10, 3)).toBe(7);
+  });
+
+  test('Subtract function test: 3 - 10', () => {
+    expect(calculator.subtract(3, 10)).toBe(-7);
+  });
+
+  test('Multiply function test: 4 * 2', () => {
+    expect(calculator.multiply(4, 2)).toBe(8);
+  });
+
+  test('Multiply function test: 4 * 0', () => {
+    expect(calculator.multiply(4, 0)).toBe(0);
+  });
+
+  test('Multiply function test: 4 * -1', () => {
+    expect(calculator.multiply(4, -1)).toBe(-4);
+  });
+
+  test('Divide function test: 9 / 3', () => {
+    expect(calculator.divide(9, 3)).toBe(3);
+  });
+
+  test('Divide function test: 15 / 7', () => {
+    expect(calculator.divide(15, 7)).toBeCloseTo(2.142);
+  });
+
+  test('Divide function test: 0 / 6', () => {
+    expect(calculator.divide(0, 6)).toBe(0);
+  });
+
+  test('Divide function test: 6 / 0', () => {
+    expect(() => calculator.divide(6, 0)).toThrow(Error);
   });
 });
