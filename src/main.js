@@ -1,7 +1,3 @@
 export function capitalize(string) {
-  let capitalizedString = string[0].toUpperCase();
-  for (let i = 1; i < string.length; i++) {
-    capitalizedString += string[i];
-  }
-  return capitalizedString;
+  return string.replace(string[0], string[0].toUpperCase());
 }
