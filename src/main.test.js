@@ -1,5 +1,5 @@
 import { test, expect, describe } from '@jest/globals';
-import { capitalize } from './main';
+import { capitalize, reverseString } from './main';
 
 describe('"capitalize" function tests', () => {
   test('Full lowercase input', () => {
@@ -19,21 +19,20 @@ describe('"capitalize" function tests', () => {
   });
 });
 
-
 describe('"reverseString" function tests', () => {
-  test('generic input with even length', () => {
-    expect(reverseString('GitHub').toBe('buHtiG'));
+  test('Generic input with even length', () => {
+    expect(reverseString('GitHub')).toMatch(/^buHtiG$/);
   });
 
-  test('generic input with odd length', () => {
-    expect(reverseString('OdinProject').toBe('tcejorPnidO'));
+  test('Generic input with odd length', () => {
+    expect(reverseString('OdinProject')).toMatch(/^tcejorPnidO$/);
   });
 
-  test('simple palindrome input', () => {
-    expect(reverseString('level').toBe('level'));
+  test('Simple palindrome input', () => {
+    expect(reverseString('level')).toMatch(/^level$/);
   });
 
-  test('large palindrome input', () => {
-    expect(reverseString('neveroddoreven').toBe('neveroddoreven'));
+  test('Large palindrome input', () => {
+    expect(reverseString('neveroddoreven')).toMatch(/^neveroddoreven$/);
   });
 });
