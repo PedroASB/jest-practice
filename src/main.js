@@ -30,18 +30,21 @@ function isUppercaseAlpha(character) {
   return character.charCodeAt(0) >= 65 && character.charCodeAt(0) <= 90;
 }
 
+// checks if character is in alphabet
+function isAlpha(character) {
+  return isLowercaseAlpha(character) || isUppercaseAlpha(character);
+}
+
 export function caesarCipher(string, shift) {
   let cipherString = '';
 
   for (let i = 0; i < string.length; i++) {
     let char = string[i];
-    if (isLowercaseAlpha(char)) {
+
+    if (isAlpha(string[i])) {
       char = char.charCodeAt(0) + shift;
-      if (char > 122) char = (char % 122) + 96;
-      cipherString += String.fromCharCode(char);
-    } else if (isUppercaseAlpha(char)) {
-      char = char.charCodeAt(0) + shift;
-      if (char > 90) char = (char % 90) + 64;
+      if (isLowercaseAlpha(string[i]) && char > 122) char = (char % 122) + 96;
+      else if (isUppercaseAlpha(string[i]) && char > 90) char = (char % 90) + 64;
       cipherString += String.fromCharCode(char);
     } else {
       cipherString += char;
